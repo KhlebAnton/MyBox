@@ -38,6 +38,19 @@
     <script src="index.js"></script>
 
     <script>
+        let input = document.getElementById('phone')
+        input.onfocus = function() {
+            document.body.style.height = window.innerHeight + 'px';
+            alert( document.documentElement.clientHeight );
+        }
+        input.onblur = function() {
+            document.body.style.height = window.innerHeight + 'px';
+        }
+        document.body.style.height = window.innerHeight + 'px';
+
+    window.addEventListener('resize', function() {
+    document.body.style.height = window.innerHeight + 'px';
+});
         function checkPhoneNumber() {
             let phoneNumber = document.getElementById('phone').value;
             phoneNumber = phoneNumber.replace(/\s+/g, '');
@@ -47,28 +60,7 @@
             }
         }
 
-        var btn = document.querySelector('.btn_next');
-    var form = document.querySelector('.telephone');
 
-        function setButtonPosition() {
-        var input = document.getElementById('phone');
-        var rect = input.getBoundingClientRect();
-        var inputBottom = rect.top + rect.height;
-
-        var windowHeight = window.innerHeight;
-        var buttonHeight = btn.clientHeight;
-
-        if (inputBottom > windowHeight - buttonHeight) {
-            btn.style.bottom = inputBottom - windowHeight + buttonHeight + 'px';
-        } else {
-            btn.style.bottom = '30px';
-        }
-    }
-
-    window.addEventListener('resize', setButtonPosition);
-    window.addEventListener('scroll', setButtonPosition);
-    window.addEventListener('focusin', setButtonPosition);
-    window.addEventListener('focusout', setButtonPosition);
         </script>
     
 </body>
