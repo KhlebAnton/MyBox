@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MyBox</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -39,20 +39,36 @@
 
     <script>
         function checkPhoneNumber() {
-            // Получаем значение поля ввода
             let phoneNumber = document.getElementById('phone').value;
-        
-            // Удаляем все пробелы из значения
             phoneNumber = phoneNumber.replace(/\s+/g, '');
-        
-            // Получаем кнопку
             let button = document.getElementById('btn_next');
-        
-            // Если значение поля телефона заполнено, меняем фон кнопки
             if (phoneNumber.length > 11) {
-                button.classList.add("active_btn"); // Здесь можно указать нужный вам цвет фона кнопки
+                button.classList.add("active_btn");
             }
         }
+
+        var btn = document.querySelector('.btn_next');
+    var form = document.querySelector('.telephone');
+
+        function setButtonPosition() {
+        var input = document.getElementById('phone');
+        var rect = input.getBoundingClientRect();
+        var inputBottom = rect.top + rect.height;
+
+        var windowHeight = window.innerHeight;
+        var buttonHeight = btn.clientHeight;
+
+        if (inputBottom > windowHeight - buttonHeight) {
+            btn.style.bottom = inputBottom - windowHeight + buttonHeight + 'px';
+        } else {
+            btn.style.bottom = '30px';
+        }
+    }
+
+    window.addEventListener('resize', setButtonPosition);
+    window.addEventListener('scroll', setButtonPosition);
+    window.addEventListener('focusin', setButtonPosition);
+    window.addEventListener('focusout', setButtonPosition);
         </script>
     
 </body>
