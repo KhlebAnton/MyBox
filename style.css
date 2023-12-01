@@ -119,6 +119,7 @@ letter-spacing: -0.07px;
     text-decoration-line: underline;
 }
 .btn_next {
+    transition: 0.2s;
     width: 232.78px;
     height: 58.95px;
     background: url("img/btn_next_dis.svg") 100% / 100% no-repeat;
