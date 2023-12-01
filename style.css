@@ -22,6 +22,7 @@ body {
     width: 100%;
     height: 100%;
     position: absolute;
+    overflow: hidden;
 }
 .screen.hidden {
     visibility: hidden;
@@ -82,7 +83,7 @@ line-height: 21px; /* 210% */
 letter-spacing: -0.1px;
 }
 .telephone {
-    position: relative;
+    position: absolute;
     height: 59.606px;
     margin-top: 28px;
     background: url("img/поле ввода.svg") 100% / 100% no-repeat;
