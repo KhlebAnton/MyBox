@@ -83,9 +83,10 @@ line-height: 21px; /* 210% */
 letter-spacing: -0.1px;
 }
 .telephone {
-    position: absolute;
+    position: relative;
+    max-width: 326px;
     height: 59.606px;
-    margin-top: 28px;
+    margin: 28px auto 0;
     background: url("img/поле ввода.svg") 100% / 100% no-repeat;
 }
 #phone {
@@ -134,7 +135,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 
-position: absolute;
+position: fixed;
 left: calc(50% - (232.78px / 2));
 bottom: 30px;
 margin-bottom: 30px;
