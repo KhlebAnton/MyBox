@@ -38,19 +38,20 @@
     <script src="index.js"></script>
 
     <script>
-        let input = document.getElementById('phone')
+        let input = document.getElementById('phone');
+        let btnNext = document.getElementById('btn_next');
         input.onfocus = function() {
             document.body.style.height = document.documentElement.clientHeight + 'px';
             document.body.style.overflow = "hidden";
+            btnNext.style.top = "400px";
+
         }
         input.onblur = function() {
             document.body.style.height = window.innerHeight + 'px';
+            btnNext.style.top = "";
         }
-        document.body.style.height = window.innerHeight + 'px';
 
-    window.addEventListener('resize', function() {
-    document.body.style.height = window.innerHeight + 'px';
-});
+   
         function checkPhoneNumber() {
             let phoneNumber = document.getElementById('phone').value;
             phoneNumber = phoneNumber.replace(/\s+/g, '');
