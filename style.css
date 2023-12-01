@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    font-family: "Press Start 2P", Arial, sans-serif;
+    color: #FFF;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: -0.1px;
+    
+}
+.screen {
+    position: relative;
+    padding: 54px 16px 34px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.screen.hidden {
+    visibility: hidden;
+    transition: 0.2s;
+    z-index: -2;
+}
+
+
+.loadscreen {
+    background-image: url("img/loadscreen.jfif");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+}
+.authorization {
+    z-index: 0;
+    background: var(--Radial, radial-gradient(155.7% 72.41% at 50.13% 72.41%, #FFB85D 0%, #FF6A13 85.94%));   
+}
+.authorization::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("img/bglines.svg") 100% / 100% no-repeat;
+}
+.authorization .header {
+    display: flex;
+    justify-content: end;
+}
+.authorization h1 {
+    margin: 13px 0 30px;
+font-size: 21px;
+
+font-weight: 400;
+line-height: 40px;
+letter-spacing: 0.374px;
+text-transform: uppercase;
+text-align: center;
+}
+.authorization h2 {
+    margin-bottom:21px;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 15px;
+    letter-spacing: 0.8px;
+}
+.authorization p {
+ text-align: center;
+    font-size: 10px;
+font-style: normal;
+font-weight: 400;
+line-height: 21px; /* 210% */
+letter-spacing: -0.1px;
+}
+.telephone {
+    position: relative;
+    height: 59.606px;
+    margin-top: 28px;
+    background: url("img/поле ввода.svg") 100% / 100% no-repeat;
+}
+#phone {
+    position: absolute;
+    top: calc(50% - (1em / 2));
+    left: calc(50% - (90% / 2));
+    color: var(--Text-color, #1F1F1F);
+    font-family: "Press Start 2P";
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 20px; /* 105.263% */
+    letter-spacing: 0.8px;
+    border: 0;
+    width: 90%;
+    margin: 0 auto;
+}
+#phone:focus {
+   outline: 0;
+}
+.authorization .politics {
+    margin-top: 18px;
+    text-align: center;
+font-size: 7px;
+font-style: normal;
+font-weight: 400;
+line-height: 18px; /* 257.143% */
+letter-spacing: -0.07px;
+}
+.authorization .politics span {
+    text-decoration-line: underline;
+}
+.btn_next {
+    width: 232.78px;
+    height: 58.95px;
+    background: url("img/btn_next_dis.svg") 100% / 100% no-repeat;
+
+color: #F6F6F6;
+font-size: 24px;
+
+font-weight: 400;
+line-height: 28px; /* 116.667% */
+letter-spacing: 2.88px;
+text-transform: uppercase;
+
+display: flex;
+justify-content: center;
+align-items: center;
+
+position: absolute;
+left: calc(50% - (232.78px / 2));
+bottom: 30px;
+margin-bottom: 30px;
+}
+.btn_next.active_btn {
+    background: url("img/btn_next_active.svg") 100% / 100% no-repeat;
+}

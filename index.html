@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyBox</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="screen loadscreen hidden">
+
+    </div>
+
+    <div class="screen authorization">
+        <div class="header">
+            <p>Пропустить</p>
+        </div>
+        <h1>Авторизация</h1>
+        <h2>Введите номер телефона</h2>
+        <p>Мы отправим код по СМС, чтобы подтвердить Ваш номер телефона</p>
+        <form class="telephone">
+            <input type="tel" id="phone" name="phone" maxlength="15" autofocus="autofocus" required="required"
+                placeholder="+7" oninput="checkPhoneNumber()"/>
+        </form>
+        <p class="politics">Продолжая, вы принимаете <span>политику конфиденциальности</span> и <span>пользовательское соглашение</span></p>
+        <div id="btn_next" class="btn_next">
+            Далее
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="index.js"></script>
+
+    <script>
+        function checkPhoneNumber() {
+            // Получаем значение поля ввода
+            let phoneNumber = document.getElementById('phone').value;
+        
+            // Удаляем все пробелы из значения
+            phoneNumber = phoneNumber.replace(/\s+/g, '');
+        
+            // Получаем кнопку
+            let button = document.getElementById('btn_next');
+        
+            // Если значение поля телефона заполнено, меняем фон кнопки
+            if (phoneNumber.length > 11) {
+                button.classList.add("active_btn"); // Здесь можно указать нужный вам цвет фона кнопки
+            }
+        }
+        </script>
+    
+</body>
+
+</html>
