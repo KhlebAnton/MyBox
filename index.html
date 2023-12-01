@@ -21,7 +21,7 @@
         <h2>Введите номер телефона</h2>
         <p>Мы отправим код по СМС, чтобы подтвердить Ваш номер телефона</p>
         <form class="telephone">
-            <input type="tel" id="phone" name="phone" maxlength="15" autofocus="autofocus" required="required"
+            <input type="tel" id="phone" name="phone" maxlength="15" required="required"
                 placeholder="+7" oninput="checkPhoneNumber()"/>
         </form>
         <p class="politics">Продолжая, вы принимаете <span>политику конфиденциальности</span> и <span>пользовательское соглашение</span></p>
@@ -56,7 +56,7 @@
             let phoneNumber = document.getElementById('phone').value;
             phoneNumber = phoneNumber.replace(/\s+/g, '');
             let button = document.getElementById('btn_next');
-            if (phoneNumber.length > 11) {
+            if (phoneNumber.length > 10) {
                 button.classList.add("active_btn");
             }
         }
