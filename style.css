@@ -252,6 +252,7 @@ input:focus {
 
     position: absolute;
     right: 10%;
+    top: 10%;
     background: url("img/wordsCloud.svg") 17% / 100% 100% no-repeat;
 }
 
@@ -372,7 +373,7 @@ input:focus {
     height: 140.58px;
 }
 
-.game_end_lifes .words_cloud::after {
+.words_cloud::after {
     content: '';
     width: 26px;
     height: 26px;
@@ -522,11 +523,184 @@ input:focus {
     align-items: center;
     justify-content: center;
 }
+
 .btn_trade.trade_active {
     background: url("img/btn_trade_active.svg") 100% / 100% no-repeat;
     color: var(--1505-U, #FF6A13);
 
 }
+
+
+.promo_code {
+    z-index: 0;
+    background: var(--Radial, radial-gradient(155.7% 72.41% at 50.13% 72.41%, #FFB85D 0%, #FF6A13 85.94%));
+}
+
+.promo_code::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("img/bglines.svg") 100% / 100% no-repeat;
+}
+
+
+.promo_code .footer p {
+    color: #000;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 32px;
+    /* 228.571% */
+    text-align: center;
+
+    width: 374px;
+}
+
+.promo_code .footer h1 {
+    color: #FF6A13;
+
+    text-align: center;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    /* 93.333% */
+    letter-spacing: 3.6px;
+    text-transform: uppercase;
+}
+
+.btn_copy_promo {
+    background: url("img/btn_copy_promo.svg") 100% / 100% no-repeat;
+    width: 320px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 40px;
+
+    color: var(--, #FFF);
+    text-align: center;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    /* 133.333% */
+    letter-spacing: 2.52px;
+    text-transform: uppercase;
+}
+
+.promo_code .footer {
+    position: relative;
+    padding-top: 100px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+    min-height: 300px;
+    height: 54vh;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url("img/portraitAlert.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.promo_code::after {
+    content: '';
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    background: url('img/Princess.svg') 50% 20% / 50% no-repeat,
+        url("img/bglines.svg") 100% / 100% no-repeat;
+}
+
+.promo_code.end_game::after {
+    content: '';
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    background: url("img/Princess.svg") 20% 100% / 24% no-repeat,
+        url("img/bglines.svg") 100% / 100% no-repeat;
+}
+
+.promo_code .words_cloud {
+    width: 332.6px;
+    height: 152.68px;
+    right: 15%;
+
+    color: #000;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: -0.09px;
+}
+
+.btn_load_app {
+    background: url("img/btn_app.svg") 100% / 100% no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 342.29px;
+    height: 58.95px;
+
+
+    color: var(--, #FFF);
+
+    text-align: center;
+    font-family: Press Start 2P;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+    /* 200% */
+
+}
+
+.btn_go_site {
+    background: url("img/btn_site.svg") 100% / 100% no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 342.29px;
+    height: 58.95px;
+    margin-top: 18px;
+
+
+    color: #FF6A13;
+
+    text-align: center;
+    font-family: Press Start 2P;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+    /* 200% */
+
+}
+
+.btn_promo_group {
+    position: absolute;
+    right: 10%;
+    bottom: 20px;
+}
+
+
 
 @media screen and (orientation: portrait) and (max-device-width: 380px) {
     .shop_card {
@@ -543,16 +717,30 @@ input:focus {
 }
 
 @media screen and (orientation: landscape) and (max-device-height: 380px) {
-    .game_over .btn_group { 
+    .game_over .btn_group {
         flex-direction: column;
         align-items: center;
     }
+
     .shop .shop_container {
         margin-top: 0;
     }
 }
 
 @media screen and (orientation: portrait) {
+    .promo_code.end_game::after {
+        background: url("img/Princess.svg") 50% 100% / 60% no-repeat,
+            url("img/bglines.svg") 100% / 100% no-repeat;
+    }
+    .promo_code.end_game .words_cloud {
+        right: 5%;
+        top: 20%;
+        
+        
+    }
+    .btn_promo_group {
+        right: calc(50% - (342.288px / 2));
+    }
     .shop .btn_group {
         flex-direction: column;
         align-items: center;
@@ -633,6 +821,37 @@ input:focus {
 }
 
 @media screen and (orientation: landscape) {
+    .promo_code.end_game::after {
+    
+        background: url("img/Princess.svg") 20% 100% / 24% no-repeat,
+            url("img/bglines.svg") 0 / 40% repeat;
+    }
+    .promo_code::after {
+        background: url('img/Knight.svg') 20% 15% / 20% no-repeat,
+            url('img/Knight.svg') 80% 15% / 20% no-repeat,
+            url('img/Princess.svg') 50% 5% / 15% no-repeat,
+            url("img/bglines.svg") 0 / 40% repeat;
+
+
+    }
+
+    .promo_code .promo_container h1 {
+        text-align: start;
+    }
+
+    .promo_code .promo_container p {
+        text-align: start;
+    }
+
+    .promo_code .footer {
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+    }
+
     .screen.shop {
         padding-bottom: 24px;
     }

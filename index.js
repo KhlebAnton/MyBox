@@ -17,7 +17,7 @@ function loadGame() {
     }
   }, 100);
 }
-// loadGame();
+loadGame();
 
 
 
@@ -60,25 +60,38 @@ function getCoins() {
   coinItems = +coinItems + 100;
   updateCoin();
 }
+//копирование промо 
+function copyPromo() {
+  let promo = document.getElementById('promo_code').textContent;
 
+  navigator.clipboard.writeText(promo)
+    .then(() => {
+
+    })
+    .catch(err => {
+      console.log('Something went wrong', err);
+    });
+}
+
+// клик на скачивание 
+function goClickedLink(e) {
+  let pageUrl = e.getAttribute('data-page-url');
+  window.location.href = pageUrl;
+}
 
 
 
 // активные карточки
 const shopCards = document.querySelectorAll('.shop_card');
+getActiveCards();
 function getActiveCards() {
   let coins = document.getElementById('coin').textContent;
   document.getElementById('coin_shop').innerHTML = coins;
-  //активация кнопки обмена
-  if(+coins >= 1000){
-    document.querySelector('.btn_trade').classList.add('trade_active');
-  } else {
-    document.querySelector('.btn_trade').classList.remove('trade_active');
-  }
+
 
   shopCards.forEach(card => {
     if (+coins >= +card.getAttribute("data-price")) {
-      card.classList.add('card_active')
+      card.classList.add('card_active');
     } else {
       card.classList.remove('card_active')
     }
@@ -88,7 +101,34 @@ function getActiveCards() {
 shopCards.forEach(card => {
   card.addEventListener('click', () => {
     if (card.classList.contains('card_active')) {
+      let coins = document.getElementById('coin').textContent;
       card.classList.toggle("choise");
+      //активация кнопки обмена
+      if (+coins >= 1000) {
+        document.querySelector('.btn_trade').classList.add('trade_active');
+        document.querySelector('.btn_trade').addEventListener("click", () => {
+          if (autorization === false) {
+            document.querySelector('.shop').classList.add("hidden");
+            document.querySelector('.authorization').classList.remove("hidden");
+
+            let autorizationScreen = document.querySelector('.authorization');
+            autorizationScreen.querySelector('.header').style.display = 'none';
+
+            let registrationScreen = autorizationScreen.nextElementSibling;
+
+            registrationScreen.querySelector('.header').style.display = 'none';
+            registrationScreen.querySelector('.btn_test_pin').removeAttribute('onclick');
+
+            registrationScreen.querySelector('.btn_test_pin').addEventListener('click', () => {
+              autorization = true;
+              document.querySelector('.registration').classList.add("hidden");
+              document.querySelector('.promo_code').classList.remove('hidden');
+            })
+          } else { document.querySelector('.promo_code').classList.remove('hidden'); }
+        })
+      } else {
+        document.querySelector('.btn_trade').classList.remove('trade_active');
+      }
       shopCards.forEach(otherCard => {
         if (otherCard !== card) {
           otherCard.classList.remove("choise");
@@ -161,9 +201,13 @@ input.onblur = function () {
 
 
 
+// авторизация
 
+let autorization = false;
 
-
+function registration(e) {
+  autorization = e;
+}
 
 let phoneNumberSave;
 
