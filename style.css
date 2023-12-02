@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 body {
     width: 100%;
     height: 100vh;
@@ -14,33 +16,81 @@ body {
     font-weight: 400;
     line-height: 21px;
     letter-spacing: -0.1px;
-    
+    position: relative;
+
 }
+
 .screen {
     position: relative;
     padding: 54px 16px 34px;
     width: 100%;
     height: 100%;
     position: absolute;
-    overflow: hidden;
+    opacity: 1;
+    transition: 0.3s;
 }
+
 .screen.hidden {
-    visibility: hidden;
-    transition: 0.2s;
+    opacity: 0;
+    transition: 0.3s;
     z-index: -2;
 }
 
 
 .loadscreen {
-    background-image: url("img/loadscreen.jfif");
+    background-image: url("img/load_img/load_screen portrait.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
+}
+
+.loadscreen svg {
+    width: 100%;
+
+    position: relative;
 
 }
+
+.loadscreen .load {
+    width: 180px;
+    margin: 0 auto;
+    position: relative;
+    top: 30%;
+}
+
+.load_bar {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+
+}
+
+.load_bar__item {
+    width: 5px;
+    height: 6px;
+    background-color: #f6f6f66e;
+}
+
+.load_bar__item.active_item {
+    background-color: #FFF;
+}
+
+@media screen and (orientation: landscape) {
+    .loadscreen {
+        background-image: url("img/load_img/load_screen 812x375.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+
+    }
+    .game_portrait {
+        display: none;
+    }
+}
+
 .authorization {
     z-index: 0;
-    background: var(--Radial, radial-gradient(155.7% 72.41% at 50.13% 72.41%, #FFB85D 0%, #FF6A13 85.94%));   
+    background: var(--Radial, radial-gradient(155.7% 72.41% at 50.13% 72.41%, #FFB85D 0%, #FF6A13 85.94%));
 }
+
 .authorization::after {
     content: "";
     z-index: -1;
@@ -51,22 +101,25 @@ body {
     bottom: 0;
     background: url("img/bglines.svg") 100% / 100% no-repeat;
 }
+
 .authorization .header {
     display: flex;
     justify-content: end;
 }
+
 .authorization h1 {
     margin: 13px 0 30px;
-font-size: 21px;
+    font-size: 21px;
 
-font-weight: 400;
-line-height: 40px;
-letter-spacing: 0.374px;
-text-transform: uppercase;
-text-align: center;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 0.374px;
+    text-transform: uppercase;
+    text-align: center;
 }
+
 .authorization h2 {
-    margin-bottom:21px;
+    margin-bottom: 21px;
     text-align: center;
     font-size: 14px;
     font-style: normal;
@@ -74,14 +127,17 @@ text-align: center;
     line-height: 15px;
     letter-spacing: 0.8px;
 }
+
 .authorization p {
- text-align: center;
+    text-align: center;
     font-size: 10px;
-font-style: normal;
-font-weight: 400;
-line-height: 21px; /* 210% */
-letter-spacing: -0.1px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+    /* 210% */
+    letter-spacing: -0.1px;
 }
+
 .telephone {
     position: relative;
     max-width: 326px;
@@ -89,6 +145,7 @@ letter-spacing: -0.1px;
     margin: 28px auto 0;
     background: url("img/поле ввода.svg") 100% / 100% no-repeat;
 }
+
 #phone {
     position: absolute;
     top: calc(50% - (1em / 2));
@@ -97,50 +154,145 @@ letter-spacing: -0.1px;
     font-family: "Press Start 2P";
     font-size: 19px;
     font-weight: 400;
-    line-height: 20px; /* 105.263% */
+    line-height: 20px;
+    /* 105.263% */
     letter-spacing: 0.8px;
     border: 0;
     width: 90%;
     margin: 0 auto;
 }
-#phone:focus {
-   outline: 0;
+
+input:focus {
+    outline: 0;
 }
+
 .authorization .politics {
     margin-top: 18px;
     text-align: center;
-font-size: 7px;
-font-style: normal;
-font-weight: 400;
-line-height: 18px; /* 257.143% */
-letter-spacing: -0.07px;
+    font-size: 7px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    /* 257.143% */
+    letter-spacing: -0.07px;
 }
+
 .authorization .politics span {
     text-decoration-line: underline;
 }
+
 .btn_next {
     transition: 0.2s;
     width: 232.78px;
     height: 58.95px;
     background: url("img/btn_next_dis.svg") 100% / 100% no-repeat;
 
-color: #F6F6F6;
-font-size: 24px;
+    color: #F6F6F6;
+    font-size: 24px;
 
-font-weight: 400;
-line-height: 28px; /* 116.667% */
-letter-spacing: 2.88px;
-text-transform: uppercase;
+    font-weight: 400;
+    line-height: 28px;
+    /* 116.667% */
+    letter-spacing: 2.88px;
+    text-transform: uppercase;
 
-display: flex;
-justify-content: center;
-align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-position: fixed;
-left: calc(50% - (232.78px / 2));
-bottom: 30px;
-margin-bottom: 30px;
+    position: fixed;
+    left: calc(50% - (232.78px / 2));
+    bottom: 30px;
+    margin-bottom: 30px;
 }
+
 .btn_next.active_btn {
     background: url("img/btn_next_active.svg") 100% / 100% no-repeat;
+}
+
+.authorization.registration h1 {
+    margin-bottom: 88px;
+}
+
+.authorization.registration input {
+    width: 60px;
+    height: 60px;
+    color: var(--Text-color, #1F1F1F);
+
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: "Press Start 2P";
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    /* 95.238% */
+    letter-spacing: 0.8px;
+    text-align: center;
+    border: 0;
+    margin: 0 8px 28px 0;
+    background: url('img/code_input_bg.svg') 100% / 100% no-repeat;
+}
+
+.pin_code {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+@media screen and (orientation: portrait) {
+    .game_go {
+        z-index: 0;
+        background: var(--Radial, radial-gradient(155.7% 72.41% at 50.13% 72.41%, #FFB85D 0%, #FF6A13 85.94%));
+    }
+
+    .game_go::after {
+        content: "";
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("img/bglines.svg") 100% / 100% no-repeat;
+    }
+
+    .game_go .knight {
+        position: absolute;
+        bottom: 43vh;
+        width: 324px;
+        height: 43.4vh;
+        left: calc(50% - (324px / 2));
+        background: url("img/Knight.svg") 20% /contain no-repeat;
+    }
+    .game_go .footer p {
+        color: #000;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 32px;
+    }
+
+    .game_go .footer {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+
+        height: 52vh;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-image: url("img/portraitAlert.svg");
+        background-size: cover;
+        background-repeat: no-repeat;
+
+
+
+
+    }
 }
