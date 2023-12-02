@@ -81,6 +81,9 @@ body {
         background-repeat: no-repeat;
 
     }
+    .screen {
+        padding: 21px 42px 0 36px;
+    }
     .game_portrait {
         display: none;
     }
@@ -239,13 +242,73 @@ input:focus {
     justify-content: center;
 }
 
+.game_lanscape {
+    
+    height: 100%;
+    background: url("img/Princess.svg") 10% 120% / 180px 325px no-repeat;
+}
+.words_princess {
+    color: var(--Text-color, #1F1F1F);
+font-size: 10px;
+font-style: normal;
+font-weight: 400;
+line-height: 26px; /* 260% */
+letter-spacing: -0.075px;
+
+width: 55%;
+max-width: 443.61px;
+min-height: 190.74px;
+padding: 20px 16px;
+
+position: absolute;
+right:10%;
+background: url("img/wordsPrincess.svg") 17% / 100% 100% no-repeat;
+}
+.game_start .btn_next {
+   
+    left: 60%;
+}
+
+.game_start {
+    background-color: #ffffff00;
+}
+
+.game_go {
+    color: var(--Text-color, #1F1F1F);
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.game_go .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.game_bar {
+    display: flex;
+    min-width: 300px;
+    width: 40%;
+    justify-content: space-between;
+    align-items: center;
+}
+.game_bar > :nth-child(n) {
+    display: flex;
+    align-items: center;
+}
+.game_paused {
+    position: absolute;
+    left: calc(50% - 54px);
+    top: calc(50% - 54px);
+}
+
 @media screen and (orientation: portrait) {
-    .game_go {
+    .game_start {
         z-index: 0;
         background: var(--Radial, radial-gradient(155.7% 72.41% at 50.13% 72.41%, #FFB85D 0%, #FF6A13 85.94%));
     }
 
-    .game_go::after {
+    .game_start::after {
         content: "";
         z-index: -1;
         position: absolute;
@@ -256,7 +319,7 @@ input:focus {
         background: url("img/bglines.svg") 100% / 100% no-repeat;
     }
 
-    .game_go .knight {
+    .game_start .knight {
         position: absolute;
         bottom: 43vh;
         width: 324px;
@@ -264,7 +327,7 @@ input:focus {
         left: calc(50% - (324px / 2));
         background: url("img/Knight.svg") 20% /contain no-repeat;
     }
-    .game_go .footer p {
+    .game_start .footer p {
         color: #000;
         text-align: center;
         margin-top: 20px;
@@ -274,7 +337,7 @@ input:focus {
         line-height: 32px;
     }
 
-    .game_go .footer {
+    .game_start .footer {
 
         display: flex;
         flex-direction: column;
@@ -290,9 +353,9 @@ input:focus {
         background-image: url("img/portraitAlert.svg");
         background-size: cover;
         background-repeat: no-repeat;
+    }
 
-
-
-
+    .game_lanscape {
+        display: none;
     }
 }

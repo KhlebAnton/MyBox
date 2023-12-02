@@ -1,3 +1,8 @@
+document.body.style.height = window.innerHeight + 'px';
+window.addEventListener('resize', function() {
+  document.body.style.height = window.innerHeight + 'px';
+});
+
 function loadGame() {
     const loadItems = document.querySelectorAll('.load_bar__item');
     let index = 0;
@@ -13,6 +18,20 @@ function loadGame() {
     }, 100);
 }
 loadGame();
+
+
+function gamePaused(element) {
+  element.style.opacity = "0";
+  document.querySelector('.game_paused').style.display = 'block';
+}
+
+function gamePlayGo(element) {
+  element.style.display = 'none'; 
+  document.querySelector('.paused').style.opacity = '1';
+}
+
+
+
 
 
 let input = document.getElementById('phone');
@@ -66,9 +85,9 @@ function nextRegistration() {
 let inputs = document.querySelectorAll(".input");
 let unlocked = false;
 let pinSet = false;
-function next () {
-    document.querySelector('.screen.authorization.registration').classList.add('hidden');
-    document.querySelector('.screen.game_go').classList.remove('hidden');
+function next (close, open) {
+    document.querySelector(close).classList.add('hidden');
+    document.querySelector(open).classList.remove('hidden');
     
 }
 
@@ -83,7 +102,7 @@ for ( let i = 0; i < inputs.length; i++ ) {
         if ( i < inputs.length - 1 ) {
           inputs[i + 1].focus();
         } else if ( i === inputs.length - 1 ) {
-          next();
+          next('.screen.authorization.registration', '.screen.game_start');
         }
       }
     })
