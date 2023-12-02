@@ -74,20 +74,7 @@ body {
     background-color: #FFF;
 }
 
-@media screen and (orientation: landscape) {
-    .loadscreen {
-        background-image: url("img/load_img/load_screen 812x375.png");
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
 
-    }
-    .screen {
-        padding: 21px 42px 0 36px;
-    }
-    .game_portrait {
-        display: none;
-    }
-}
 
 .authorization {
     z-index: 0;
@@ -243,29 +230,33 @@ input:focus {
 }
 
 .game_lanscape {
-    
+
     height: 100%;
     background: url("img/Princess.svg") 10% 120% / 180px 325px no-repeat;
 }
-.words_princess {
+
+.words_cloud {
     color: var(--Text-color, #1F1F1F);
-font-size: 10px;
-font-style: normal;
-font-weight: 400;
-line-height: 26px; /* 260% */
-letter-spacing: -0.075px;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    /* 260% */
+    letter-spacing: -0.075px;
 
-width: 55%;
-max-width: 443.61px;
-min-height: 190.74px;
-padding: 20px 16px;
+    margin-top: 30px;
+    width: 55%;
+    max-width: 443.61px;
+    min-height: 190.74px;
+    padding: 20px 16px;
 
-position: absolute;
-right:10%;
-background: url("img/wordsPrincess.svg") 17% / 100% 100% no-repeat;
+    position: absolute;
+    right: 10%;
+    background: url("img/wordsCloud.svg") 17% / 100% 100% no-repeat;
 }
+
 .game_start .btn_next {
-   
+
     left: 60%;
 }
 
@@ -275,16 +266,18 @@ background: url("img/wordsPrincess.svg") 17% / 100% 100% no-repeat;
 
 .game_go {
     color: var(--Text-color, #1F1F1F);
-font-size: 20px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
+
 .game_go .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
 .game_bar {
     display: flex;
     min-width: 300px;
@@ -292,17 +285,294 @@ line-height: normal;
     justify-content: space-between;
     align-items: center;
 }
-.game_bar > :nth-child(n) {
+
+.game_bar> :nth-child(n) {
     display: flex;
     align-items: center;
 }
+
 .game_paused {
     position: absolute;
     left: calc(50% - 54px);
     top: calc(50% - 54px);
 }
 
+.game_over {
+    z-index: 0;
+    background: var(--Radial, radial-gradient(155.7% 72.41% at 50.13% 72.41%, #FFB85D 0%, #FF6A13 85.94%));
+}
+
+.game_over::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('img/bglines.svg') 100% / 100% no-repeat;
+
+}
+
+.game_over .game_bar {
+    font-size: 26.043px;
+    width: 100%;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.game_over .game_bar> :nth-child(n+1) {
+    margin-left: 50px;
+}
+
+.game_over h1 {
+    margin-top: 35px;
+    text-align: center;
+    font-size: 42px;
+    font-weight: 400;
+    line-height: 61px;
+    /* 145.238% */
+    text-transform: uppercase;
+}
+
+.game_over .btn_group {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+    font-size: 16px;
+    line-height: 32px;
+}
+
+.btn_again_game {
+    background: url("img/btn_again_game.svg") 100% / 100% no-repeat;
+    width: 342.29px;
+    height: 58.95px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn_kiss_princess {
+    color: var(--1505-U, #FF6A13);
+    background: url("img/btn_kiss_princess.svg") 100% / 100% no-repeat;
+    width: 378.8px;
+    height: 58.95px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game_end_lifes {
+    background: url("img/Dragon.svg") 10% 100% no-repeat;
+}
+
+.game_end_lifes .words_cloud {
+    width: 45%;
+    max-width: 332.6px;
+    height: 140.58px;
+}
+
+.game_end_lifes .words_cloud::after {
+    content: '';
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    background: url("img/close.svg");
+    top: 0;
+    right: 0;
+
+}
+
+.game_end_lifes .btn_next {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+}
+
+.kissing_animation::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url("img/Анимация.gif") 50% 100% / 50% no-repeat rgba(180, 36, 36, 0);
+
+}
+
+.screen.shop {
+    padding-bottom: 34px;
+}
+
+
+.shop {
+    display: flex;
+    flex-direction: column;
+    z-index: 0;
+    background: var(--Radial, radial-gradient(155.7% 72.41% at 50.13% 72.41%, #FFB85D 0%, #FF6A13 85.94%));
+}
+
+.shop::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("img/bglines.svg") 100% / 100% no-repeat;
+}
+
+.shop .head {
+    font-size: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.shop .coins {
+    display: flex;
+    align-items: center;
+}
+
+.shop_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: center;
+    margin-top: 27px;
+    height: 100%;
+}
+
+.shop_card {
+    position: relative;
+    max-width: 167.79px;
+    max-height: 205.57px;
+    min-width: 157.79px;
+    width: 50%;
+    height: 205.57px;
+    background: #0000005b;
+    margin-top: 20px;
+}
+
+.shop_card.choise::after {
+    content: "";
+    width: 30.23px;
+    height: 30.24px;
+    left: calc(50% - 15px);
+    top: -15px;
+    position: absolute;
+    background: url('img/menu_cards/Галочка.svg');
+
+}
+
+
+.set_afrika {
+    background: url("img/menu_cards/set_afrika.svg") 100% / 100% no-repeat;
+}
+
+.california {
+    background: url('img/menu_cards/california.svg') 100% / 100% no-repeat;
+}
+
+.sale_price {
+    background: url('img/menu_cards/sale_price.svg') 100% / 100% no-repeat;
+}
+
+.trade_coin {
+    background: url('img/menu_cards/trade_coin.svg') 100% / 100% no-repeat;
+}
+
+.set_afrika.card_active {
+    background: url("img/menu_cards/set_afrika_active.svg") 100% / 100% no-repeat;
+}
+
+.california.card_active {
+    background: url('img/menu_cards/california_active.svg') 100% / 100% no-repeat;
+}
+
+.sale_price.card_active {
+    background: url('img/menu_cards/sale_price_active.svg') 100% / 100% no-repeat;
+}
+
+.trade_coin.card_active {
+    background: url('img/menu_cards/trade_coin_active.svg') 100% / 100% no-repeat;
+}
+
+.shop .btn_group {
+    margin-top: 15px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn_trade {
+    background: url("img/btn_trade_dis.svg") 100% / 100% no-repeat;
+    width: 232.78px;
+    height: 58.95px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn_trade.trade_active {
+    background: url("img/btn_trade_active.svg") 100% / 100% no-repeat;
+    color: var(--1505-U, #FF6A13);
+
+}
+
+@media screen and (orientation: portrait) and (max-device-width: 380px) {
+    .shop_card {
+        max-width: 167.79px;
+        max-height: 205.57px;
+        min-width: 107.79px;
+        width: 20vh;
+        height: 25vh;
+    }
+
+    .shop_container {
+        margin-top: 0;
+    }
+}
+
+@media screen and (orientation: landscape) and (max-device-height: 380px) {
+    .game_over .btn_group { 
+        flex-direction: column;
+        align-items: center;
+    }
+    .shop .shop_container {
+        margin-top: 0;
+    }
+}
+
 @media screen and (orientation: portrait) {
+    .shop .btn_group {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn_trade {
+        margin-top: 20px;
+    }
+
+    .kissing_animation::before {
+        background: url("img/Анимация.gif") 50% 50% / 100% no-repeat rgba(180, 36, 36, 0);
+
+    }
+
+    .game_over .btn_group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .game_start {
         z-index: 0;
         background: var(--Radial, radial-gradient(155.7% 72.41% at 50.13% 72.41%, #FFB85D 0%, #FF6A13 85.94%));
@@ -327,6 +597,7 @@ line-height: normal;
         left: calc(50% - (324px / 2));
         background: url("img/Knight.svg") 20% /contain no-repeat;
     }
+
     .game_start .footer p {
         color: #000;
         text-align: center;
@@ -357,5 +628,60 @@ line-height: normal;
 
     .game_lanscape {
         display: none;
+    }
+
+}
+
+@media screen and (orientation: landscape) {
+    .screen.shop {
+        padding-bottom: 24px;
+    }
+
+    .shop_card {
+
+        min-width: 137.79px;
+        width: 25%;
+
+    }
+
+    .loadscreen {
+        background-image: url("img/load_img/load_screen 812x375.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+
+    }
+
+    .screen {
+        padding: 21px 42px 0 36px;
+    }
+
+    .game_portrait {
+        display: none;
+    }
+
+    .authorization::after {
+        top: -100%;
+        left: -100%;
+        right: -100%;
+        bottom: -100%;
+        background: url('img/bglines.svg') 0% / 13% repeat;
+    }
+
+    .game_over::after {
+        top: -100%;
+        left: -100%;
+        right: -100%;
+        bottom: -100%;
+        background: url('img/bglines.svg') 0% / 13% repeat;
+
+    }
+
+    .shop::after {
+        top: -100%;
+        left: -100%;
+        right: -100%;
+        bottom: -100%;
+        background: url('img/bglines.svg') 0% / 13% repeat;
+
     }
 }

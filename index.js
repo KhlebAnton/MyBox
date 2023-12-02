@@ -1,32 +1,144 @@
 document.body.style.height = window.innerHeight + 'px';
-window.addEventListener('resize', function() {
+window.addEventListener('resize', function () {
   document.body.style.height = window.innerHeight + 'px';
 });
 
 function loadGame() {
-    const loadItems = document.querySelectorAll('.load_bar__item');
-    let index = 0;
-    const interval = setInterval(() => {
-        loadItems[index].classList.add('active_item');
-        index++;
-        if (index >= loadItems.length) {
-            clearInterval(interval);
-            document.querySelector(".loadscreen").classList.add('hidden');
-            document.querySelector(".authorization").classList.remove('hidden')
+  const loadItems = document.querySelectorAll('.load_bar__item');
+  let index = 0;
+  const interval = setInterval(() => {
+    loadItems[index].classList.add('active_item');
+    index++;
+    if (index >= loadItems.length) {
+      clearInterval(interval);
+      document.querySelector(".loadscreen").classList.add('hidden');
+      document.querySelector(".authorization").classList.remove('hidden')
 
-        }
-    }, 100);
+    }
+  }, 100);
 }
-loadGame();
+// loadGame();
 
 
+
+// обновление и убавление жизней тест
+const life = document.getElementById('life');
+let lifeCoins = life.textContent;
+updateLife();
+
+function updateLife() {
+  life.innerHTML = lifeCoins;
+  document.querySelectorAll('.life').forEach(life => {
+    life.innerHTML = lifeCoins;
+  })
+}
+
+function removeOneLife() {
+  if (life.textContent > 0) {
+    lifeCoins = (lifeCoins - 1);
+    updateLife();
+
+    life.closest('.screen').classList.add('hidden');
+    document.querySelector('.game_over').classList.remove('hidden');
+
+  }
+}
+//обновление и добавление монет 100
+const coin = document.getElementById('coin');
+let coinItems = coin.textContent;
+updateCoin();
+
+function updateCoin() {
+  coin.innerHTML = coinItems;
+  document.querySelectorAll('.coin').forEach(coin => {
+    coin.innerHTML = coinItems;
+  })
+
+}
+
+function getCoins() {
+  coinItems = +coinItems + 100;
+  updateCoin();
+}
+
+
+
+
+// активные карточки
+const shopCards = document.querySelectorAll('.shop_card');
+function getActiveCards() {
+  let coins = document.getElementById('coin').textContent;
+  document.getElementById('coin_shop').innerHTML = coins;
+  //активация кнопки обмена
+  if(+coins >= 1000){
+    document.querySelector('.btn_trade').classList.add('trade_active');
+  } else {
+    document.querySelector('.btn_trade').classList.remove('trade_active');
+  }
+
+  shopCards.forEach(card => {
+    if (+coins >= +card.getAttribute("data-price")) {
+      card.classList.add('card_active')
+    } else {
+      card.classList.remove('card_active')
+    }
+  })
+}
+// выбор из активных карточек
+shopCards.forEach(card => {
+  card.addEventListener('click', () => {
+    if (card.classList.contains('card_active')) {
+      card.classList.toggle("choise");
+      shopCards.forEach(otherCard => {
+        if (otherCard !== card) {
+          otherCard.classList.remove("choise");
+        }
+      });
+    }
+
+  })
+})
+
+
+
+
+// переключение
+function next(close, open) {
+  close.closest('.screen').classList.add('hidden');
+  document.querySelector(open).classList.remove('hidden');
+
+}
+function next(close, open, bool) {
+  close.closest('.screen').classList.add('hidden');
+  document.querySelector(open).classList.remove('hidden');
+
+  if (bool === true) {
+    setTimeout(function () {
+      document.querySelector(open).classList.add('hidden');
+      document.querySelector(".question_exchange").classList.remove('hidden');
+
+    }, 3000);
+  }
+}
+function againGame(elem) {
+  elem.closest('.screen').classList.add('hidden')
+  if (lifeCoins > 0) {
+    document.querySelector('.game_go').classList.remove('hidden');
+  } else {
+    document.querySelector('.game_end_lifes').classList.remove('hidden');
+  }
+
+}
+
+
+// пауза
 function gamePaused(element) {
   element.style.opacity = "0";
   document.querySelector('.game_paused').style.display = 'block';
 }
 
 function gamePlayGo(element) {
-  element.style.display = 'none'; 
+  element.style.display = 'none';
   document.querySelector('.paused').style.opacity = '1';
 }
 
@@ -37,15 +149,17 @@ function gamePlayGo(element) {
 let input = document.getElementById('phone');
 let btnNext = document.getElementById('btn_next');
 input.onfocus = function () {
-    document.body.style.height = document.documentElement.clientHeight + 'px';
-    document.body.style.overflow = "hidden";
-    btnNext.style.top = "400px";
+  document.body.style.height = document.documentElement.clientHeight + 'px';
+  document.body.style.overflow = "hidden";
+  btnNext.style.top = "400px";
 
 }
 input.onblur = function () {
-    document.body.style.height = window.innerHeight + 'px';
-    btnNext.style.top = "";
+  document.body.style.height = window.innerHeight + 'px';
+  btnNext.style.top = "";
 }
+
+
 
 
 
@@ -54,30 +168,30 @@ input.onblur = function () {
 let phoneNumberSave;
 
 function checkPhoneNumber() {
-    let phoneNumber = document.getElementById('phone').value;
-    phoneNumber = phoneNumber.replace(/\s+/g, '');
-    let button = document.getElementById('btn_next');
-    if (phoneNumber.length > 10) {
-        button.classList.add("active_btn");
-        input.addEventListener("keydown", (event) => {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                input.blur();
-            }
+  let phoneNumber = document.getElementById('phone').value;
+  phoneNumber = phoneNumber.replace(/\s+/g, '');
+  let button = document.getElementById('btn_next');
+  if (phoneNumber.length > 10) {
+    button.classList.add("active_btn");
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        input.blur();
+      }
 
-        })
-        button.addEventListener("click", () => {
-            nextRegistration();
-        })
-    } else {
-        button.classList.remove("active_btn");
-    }
+    })
+    button.addEventListener("click", () => {
+      nextRegistration();
+    })
+  } else {
+    button.classList.remove("active_btn");
+  }
 }
 function nextRegistration() {
-    document.querySelector('.screen.authorization').classList.add('hidden');
-    document.querySelector('.screen.authorization.registration').classList.remove('hidden');
-    phoneNumberSave = document.getElementById('phone').value;
-    document.getElementById('tel_spam').innerHTML = phoneNumberSave;
+  document.querySelector('.screen.authorization').classList.add('hidden');
+  document.querySelector('.screen.authorization.registration').classList.remove('hidden');
+  phoneNumberSave = document.getElementById('phone').value;
+  document.getElementById('tel_spam').innerHTML = phoneNumberSave;
 
 }
 
@@ -85,53 +199,49 @@ function nextRegistration() {
 let inputs = document.querySelectorAll(".input");
 let unlocked = false;
 let pinSet = false;
-function next (close, open) {
-    document.querySelector(close).classList.add('hidden');
-    document.querySelector(open).classList.remove('hidden');
-    
-}
 
-for ( let i = 0; i < inputs.length; i++ ) {
-    setInputFilter(inputs[i], function(value) {
-      return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 9);
-    });
-    inputs[i].addEventListener('input', function() {
-      if ( unlocked ) { return }
-      if ( inputs[i].value.length > 0 ) {
-        inputs[i].value = inputs[i].value.slice(0, 1);
-        if ( i < inputs.length - 1 ) {
-          inputs[i + 1].focus();
-        } else if ( i === inputs.length - 1 ) {
-          next('.screen.authorization.registration', '.screen.game_start');
-        }
+
+for (let i = 0; i < inputs.length; i++) {
+  setInputFilter(inputs[i], function (value) {
+    return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 9);
+  });
+  inputs[i].addEventListener('input', function () {
+    if (unlocked) { return }
+    if (inputs[i].value.length > 0) {
+      inputs[i].value = inputs[i].value.slice(0, 1);
+      if (i < inputs.length - 1) {
+        inputs[i + 1].focus();
+      } else if (i === inputs.length - 1) {
+        document.getElementById('btn_test_pin').style.display = "block";
       }
-    })
-    inputs[i].addEventListener('keydown', function(e) {
-      if ( unlocked ) { return }
-      let key = e.which || e.keyCode || 0;
-      if ( key === 8  ) {
-        this.value = '';
-        if ( (i - 1) < 0  ) { return }
-        else {
-          inputs[ i - 1 ].focus();
-        }
+    }
+  })
+  inputs[i].addEventListener('keydown', function (e) {
+    if (unlocked) { return }
+    let key = e.which || e.keyCode || 0;
+    if (key === 8) {
+      this.value = '';
+      if ((i - 1) < 0) { return }
+      else {
+        inputs[i - 1].focus();
+      }
+    }
+  });
+}
+function setInputFilter(textbox, inputFilter) {
+  ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function (event) {
+    textbox.addEventListener(event, function () {
+      if (inputFilter(this.value)) {
+        this.oldValue = this.value;
+        this.oldSelectionStart = this.selectionStart;
+        this.oldSelectionEnd = this.selectionEnd;
+      } else if (this.hasOwnProperty("oldValue")) {
+        this.value = this.oldValue;
+        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
       }
     });
-  }
-  function setInputFilter(textbox, inputFilter) {
-    ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
-      textbox.addEventListener(event, function() {
-        if (inputFilter(this.value)) {
-          this.oldValue = this.value;
-          this.oldSelectionStart = this.selectionStart;
-          this.oldSelectionEnd = this.selectionEnd;
-        } else if (this.hasOwnProperty("oldValue")) {
-          this.value = this.oldValue;
-          this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
-        }
-      });
-    });
-  }
+  });
+}
 
 
 
@@ -143,25 +253,25 @@ var resendButton = document.getElementById('resendButton');
 var timer;
 
 function startTimer() {
-    timerValue = 59;
+  timerValue = 59;
 
-    timerText.style.display = 'block';
-    resendLink.style.display = 'none';
+  timerText.style.display = 'block';
+  resendLink.style.display = 'none';
 
-    timer = setInterval(function () {
-        timerValue--;
-        timerValueElement.textContent = timerValue;
+  timer = setInterval(function () {
+    timerValue--;
+    timerValueElement.textContent = timerValue;
 
-        if (timerValue === 0) {
-            clearInterval(timer);
-            timerText.style.display = 'none';
-            resendLink.style.display = 'block';
-        }
-    }, 1000);
+    if (timerValue === 0) {
+      clearInterval(timer);
+      timerText.style.display = 'none';
+      resendLink.style.display = 'block';
+    }
+  }, 1000);
 }
 resendButton.addEventListener('click', function (event) {
-    event.preventDefault();
-    startTimer();
+  event.preventDefault();
+  startTimer();
 });
 
 startTimer();
