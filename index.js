@@ -17,7 +17,7 @@ function loadGame() {
     }
   }, 100);
 }
-// loadGame();
+loadGame();
 
 
 
