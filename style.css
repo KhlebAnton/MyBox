@@ -8,6 +8,7 @@
 
 .html {
     overflow: hidden;
+    touch-action: none;
 }
 
 body {
@@ -43,6 +44,7 @@ body {
     opacity: 1;
     transition: 0.3s;
     overflow: hidden;
+    touch-action: none;
 }
 
 .screen.hidden {

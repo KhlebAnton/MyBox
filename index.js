@@ -2,8 +2,7 @@ document.body.style.height = window.innerHeight + 'px';
 window.addEventListener('resize', function () {
   document.body.style.height = window.innerHeight + 'px';
 });
-// отключение зума
-webView.getSettings().setUseWideViewPort(false);
+
 
 function loadGame() {
   const loadItems = document.querySelectorAll('.load_bar__item');
