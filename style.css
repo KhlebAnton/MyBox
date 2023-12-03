@@ -5,11 +5,15 @@
     margin: 0;
     padding: 0;
 }
+.html {
+    overflow: hidden;
+}
 
 body {
     width: 100%;
     height: 100vh;
     overflow: hidden;
+    touch-action: none;
     font-family: "Press Start 2P", Arial, sans-serif;
     color: #FFF;
     font-size: 10px;
@@ -28,6 +32,7 @@ body {
     position: absolute;
     opacity: 1;
     transition: 0.3s;
+    overflow: hidden;
 }
 
 .screen.hidden {
@@ -39,7 +44,7 @@ body {
 
 .loadscreen {
     background-image: url("img/load_img/load_screen portrait.png");
-    background-size: 100% 100%;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
@@ -728,6 +733,11 @@ input:focus {
 }
 
 @media screen and (orientation: portrait) {
+
+    .shop .head svg.logo {
+        width:159px;
+         height:54px;
+    }
     .promo_code.end_game::after {
         background: url("img/Princess.svg") 50% 100% / 60% no-repeat,
             url("img/bglines.svg") 100% / 100% no-repeat;
@@ -821,6 +831,13 @@ input:focus {
 }
 
 @media screen and (orientation: landscape) {
+    
+    .authorization h1 {
+        margin: 0;
+    }
+    .authorization.registration h1 {
+        margin: 20px;
+    }
     .promo_code.end_game::after {
     
         background: url("img/Princess.svg") 20% 100% / 24% no-repeat,
@@ -865,7 +882,7 @@ input:focus {
 
     .loadscreen {
         background-image: url("img/load_img/load_screen 812x375.png");
-        background-size: 100% 100%;
+        background-size: cover;
         background-repeat: no-repeat;
 
     }
