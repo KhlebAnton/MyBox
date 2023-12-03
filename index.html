@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="screen loadscreen ">
+    <div class="screen loadscreen hidden">
         <div class="load">
             <svg viewBox="0 0 62 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_346_937)">
@@ -76,7 +76,7 @@
             Далее
         </div>
     </div>
-    <div class="screen authorization registration hidden">
+    <div class="screen authorization registration ">
         <div class="header">
             <p onclick="next(this,'.screen.game_start'), registration(false)">Пропустить</p>
         </div>
@@ -106,11 +106,18 @@
             Пришел Правильный код
         </button>
 
-        <p id="timerText" style="margin-top: 100px;">Новый пароль через 0:<span id="timerValue">59</span></p>
-        <div id="resendLink" style="display: none; margin-top: 100px;">
+        <p id="timerText" >Новый пароль через 0:<span id="timerValue">59</span></p>
+        <div id="resendLink" style="display: none;">
             <p id="resendButton">
                 Повторная отправка кода
             </p>
+        </div>
+        <div class="btn_group">
+            <div class="btn_prev">
+            </div>
+            <div class="btn_next registration">
+                Далее
+            </div>
         </div>
     </div>
 
@@ -1108,8 +1115,10 @@
         <p style="padding-top: 30px;" class="words_cloud">Как использовать промокод: скачивай приложение Mybox или
             сделать заказ на сайте</p>
         <div class="btn_promo_group">
-            <div onclick="goClickedLink(this)" class="btn_load_app" data-page-url="https://www.google.ru">Скачать приложние</div>
-            <div onclick="goClickedLink(this)" class="btn_go_site" data-page-url="https://www.yandex.ru">Перейти на сайт</div>
+            <div onclick="goClickedLink(this)" class="btn_load_app" data-page-url="https://www.google.ru">Скачать
+                приложние</div>
+            <div onclick="goClickedLink(this)" class="btn_go_site" data-page-url="https://www.yandex.ru">Перейти на сайт
+            </div>
         </div>
     </div>
 

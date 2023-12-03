@@ -17,7 +17,7 @@ function loadGame() {
     }
   }, 100);
 }
-loadGame();
+// loadGame();
 
 
 
@@ -188,16 +188,7 @@ function gamePlayGo(element) {
 
 let input = document.getElementById('phone');
 let btnNext = document.getElementById('btn_next');
-input.onfocus = function () {
-  document.body.style.height = document.documentElement.clientHeight + 'px';
-  document.body.style.overflow = "hidden";
-  btnNext.style.top = "400px";
 
-}
-input.onblur = function () {
-  document.body.style.height = window.innerHeight + 'px';
-  btnNext.style.top = "";
-}
 
 
 
@@ -257,6 +248,7 @@ for (let i = 0; i < inputs.length; i++) {
         inputs[i + 1].focus();
       } else if (i === inputs.length - 1) {
         document.getElementById('btn_test_pin').style.display = "block";
+        document.querySelector('.btn_next.registration').classList.add('active_btn')
       }
     }
   })
