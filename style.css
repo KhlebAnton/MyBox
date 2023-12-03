@@ -420,9 +420,34 @@ input:focus {
     bottom: 0;
     left: 0;
     right: 0;
-    background: url("img/Анимация.gif") 50% 100% / 50% no-repeat rgba(180, 36, 36, 0);
+    background: url("img/animation/Dragon/Dragon-1.png") 30% 100% / 40% no-repeat,
+    url("img/animation/Princess/Princess-1.png") 65% 100% / 25% no-repeat,
+    url("img/animation/love.svg") 60% 0 / 0% no-repeat;
+    animation: kiss 1s infinite;
+    transition: 0.05s;
 
 }
+
+@keyframes kiss {
+    10% {
+        background-image: url('img/animation/Dragon/Dragon-2.png'), url('img/animation/Princess/Princess-2.png'),url("img/animation/love.svg");
+    }
+    30% {
+        background-image: url('img/animation/Dragon/Dragon-3.png'), url('img/animation/Princess/Princess-3.png'),url("img/animation/love.svg");
+    }
+    60% {
+        background: url('img/animation/Dragon/Dragon-4.png') 30% 100% / 40% no-repeat, 
+        url('img/animation/Princess/Princess-4.png') 65% 100% / 25% no-repeat,
+        url("img/animation/love.svg") 55% 0 / 0% no-repeat;
+    }
+    100%{
+        background: url("img/animation/Dragon/Dragon-5.png") 30% 100% / 40% no-repeat,
+        url("img/animation/Princess/Princess-5.png") 65%  100% / 25% no-repeat,
+        url("img/animation/love.svg") 55% 10% / 10% no-repeat;
+    }
+}
+
+
 
 .screen.shop {
     padding-bottom: 34px;
@@ -749,6 +774,40 @@ input:focus {
 }
 
 @media screen and (orientation: portrait) {
+    .kissing_animation::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: url("img/animation/Dragon/Dragon-1.png") -50% 50% / 80% no-repeat,
+        url("img/animation/Princess/Princess-1.png") 100% 55% / 50% no-repeat,
+        url("img/animation/love.svg") 60% 0 / 0% no-repeat;
+        animation: kiss 1.5s infinite;
+        transition: 0.05s;
+    
+    }
+    
+    @keyframes kiss {
+        10% {
+            background-image: url('img/animation/Dragon/Dragon-2.png'), url('img/animation/Princess/Princess-2.png'),url("img/animation/love.svg");
+        }
+        30% {
+            background-image: url('img/animation/Dragon/Dragon-3.png'), url('img/animation/Princess/Princess-3.png'),url("img/animation/love.svg");
+        }
+        60% {
+            background: url('img/animation/Dragon/Dragon-4.png') -50% 50% / 80% no-repeat, 
+            url('img/animation/Princess/Princess-4.png') 100% 55% / 50% no-repeat,
+            url("img/animation/love.svg") 60% 20% / 0% no-repeat;
+        }
+        100%{
+            background: url("img/animation/Dragon/Dragon-5.png") -50% 50% / 80% no-repeat,
+            url("img/animation/Princess/Princess-5.png") 100%  55% / 50% no-repeat,
+            url("img/animation/love.svg") 65% 30% / 20% no-repeat;
+        }
+    }
+    
 
     .shop .head svg.logo {
         width: 159px;
@@ -780,10 +839,7 @@ input:focus {
         margin-top: 20px;
     }
 
-    .kissing_animation::before {
-        background: url("img/Анимация.gif") 50% 50% / 100% no-repeat rgba(180, 36, 36, 0);
-
-    }
+    
 
     .game_over .btn_group {
         display: flex;
@@ -851,6 +907,12 @@ input:focus {
 }
 
 @media screen and (orientation: landscape) {
+    .loadscreen .load {
+        width: 180px;
+        margin: 0 auto;
+        position: relative;
+        top: 0;
+    }
 
     .authorization h1 {
         margin: 0;

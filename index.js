@@ -16,7 +16,7 @@ function loadGame() {
       document.querySelector(".authorization").classList.remove('hidden')
 
     }
-  }, 100);
+  }, 150);
 }
 loadGame();
 
@@ -158,7 +158,7 @@ function next(close, open, bool) {
       document.querySelector(open).classList.add('hidden');
       document.querySelector(".question_exchange").classList.remove('hidden');
 
-    }, 3000);
+    }, 4000);
   }
 }
 function againGame(elem) {
