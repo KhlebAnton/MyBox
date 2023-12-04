@@ -226,6 +226,7 @@ function checkPhoneNumber() {
 function nextRegistration() {
   document.querySelector('.screen.authorization').classList.add('hidden');
   document.querySelector('.screen.authorization.registration').classList.remove('hidden');
+  startTimer();
   phoneNumberSave = document.getElementById('phone').value;
   document.getElementById('tel_spam').innerHTML = phoneNumberSave;
 
@@ -311,4 +312,3 @@ resendButton.addEventListener('click', function (event) {
   startTimer();
 });
 
-startTimer();
