@@ -1,8 +1,10 @@
+
+
 document.body.style.height = window.innerHeight + 'px';
 window.addEventListener('resize', function () {
   document.body.style.height = window.innerHeight + 'px';
 });
-document.querySelector('button').addEventListener('dblclick', function(event) {
+document.querySelector('button').addEventListener('dblclick', function (event) {
   event.preventDefault();
 });
 
@@ -36,6 +38,11 @@ function updateLife() {
     life.innerHTML = lifeCoins;
   })
 }
+function updateLife(lifeItem) {
+  document.querySelectorAll('.life').forEach(life => {
+    life.innerHTML = lifeItem;
+  })
+}
 
 function removeOneLife() {
   if (life.textContent > 0) {
@@ -57,7 +64,12 @@ function updateCoin() {
   document.querySelectorAll('.coin').forEach(coin => {
     coin.innerHTML = coinItems;
   })
+}
 
+function updateCoin(coinItem) {
+  document.querySelectorAll('.coin').forEach(coin => {
+    coin.innerHTML = coinItem;
+  })
 }
 
 function getCoins() {
@@ -245,27 +257,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
 let phoneNumberSave;
 
-
+// добавил onInputPhone
 function checkPhoneNumber() {
   let phoneNumber = document.getElementById('phone').value;
   phoneNumber = phoneNumber.replace(/\s+/g, '');
   let button = document.getElementById('btn_next');
-  if (phoneNumber.length > 10) {
-    button.classList.add("active_btn");
-    input.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        input.blur();
-      }
+  let input = document.getElementById('phone');
 
-    })
-    button.addEventListener("click", () => {
-      nextRegistration();
-    })
+  const keydownHandler = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      // onInputPhone(phoneNumber.replace(/[\s()]/g, "")); c app
+      input.blur();
+    }
+  };
+  const clickHandler = (event) => {
+    // onInputPhone(phoneNumber.replace(/[\s()]/g, "")); c app
+    button.classList.remove("active_btn");
+    nextRegistration(); //del
+  };
+
+
+  if (phoneNumber.length > 13) {
+    button.classList.add("active_btn");
+    input.addEventListener("keydown", keydownHandler);
+    button.onclick = clickHandler;
   } else {
+    
+    input.removeEventListener("keydown", keydownHandler);
+    button.onclick = "";
     button.classList.remove("active_btn");
   }
 }
+
 function nextRegistration() {
   document.querySelector('.screen.authorization').classList.add('hidden');
   document.querySelector('.screen.authorization.registration').classList.remove('hidden');
@@ -275,11 +299,11 @@ function nextRegistration() {
 
 }
 
-
+// добавил onInputcode
 let inputs = document.querySelectorAll(".input");
 let unlocked = false;
 let pinSet = false;
-
+let nums_pin = [];
 
 for (let i = 0; i < inputs.length; i++) {
   setInputFilter(inputs[i], function (value) {
@@ -289,11 +313,14 @@ for (let i = 0; i < inputs.length; i++) {
     if (unlocked) { return }
     if (inputs[i].value.length > 0) {
       inputs[i].value = inputs[i].value.slice(0, 1);
+      nums_pin[i] = inputs[i].value;
       if (i < inputs.length - 1) {
         inputs[i + 1].focus();
       } else if (i === inputs.length - 1) {
-        document.getElementById('btn_test_pin').style.display = "block";
+        document.getElementById('btn_test_pin').style.display = "block"; //del
         document.querySelector('.btn_next.registration').classList.add('active_btn')
+
+        // onInputCode(nums_pin.join(''));  с апп
       }
     }
   })

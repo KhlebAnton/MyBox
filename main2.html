@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Mybox runner</title>
+</head>
+
+<body style="text-align: center; padding: 0; border: 0; margin: 0;">
+    <canvas id="unity-canvas" width=1% height=1% style="width: 1%; height: 1%; background: #231F20"></canvas>
+    <!--<script src="Build/_Build.loader.js"></script>-->
+    <script>
+        UIAPI = {
+            onFullLoad: () => { window.UNITY.sendMessageToUnity(new Command("onloaded", [])) }, // вызвать при полной загрузке
+            HideLoading: () => { document.querySelector('.loadscreen').classList.add('hidden'); }, // скрытие загрузочного экрана
+            Auth: {
+                Show: () => { document.querySelector('.authorization').classList.remove('hidden') }, // экран авторизации
+                Hide: () => {
+                    document.querySelector('.authorization').classList.remove('hidden');
+                    document.querySelector('.authorization.registration').classList.remove('hidden')
+                }, // экран авторизации
+                onInputPhone: (phone) => { window.UNITY.sendMessageToUnity(new Command("phoneenter", [phone])) }, // передача телефона в приложение
+                PhoneCorrect: (value) => {
+                    nextRegistration();
+                }, // если ввод верный - true
+
+                onInputCode: (code) => { window.UNITY.sendMessageToUnity(new Command("codeenter", [code])) }, // передача кода в приложение
+                CodeCorrect: (value) => {
+
+                }, // если ввод верный - true
+            },
+            RotateScreen: {
+                Show: () => { document.querySelector('.game_start').classList.remove('hidden') }, // экран поворота
+                Hide: () => { document.querySelector('.game_start').classList.add('hidden') }, // экран поворота
+                onPlayGame: () => { window.UNITY.sendMessageToUnity(new Command("startgame", [])) }, // кнопка запуска игры ?добавить на кнопку в html
+            },
+            Gameplay: {
+                Show: () => { document.querySelector('.game_go').classList.remove('hidden') }, //
+                Hide: () => { document.querySelector('.game_go').classList.add('hidden') }, //
+                SetScore: (value) => {
+                    const coin = document.getElementById('coin');
+                    coin.innerHTML = value;
+                }, // (number)
+                SetHearts: (value) => {
+                    const life = document.getElementById('life');
+                    life.innerHTML = value;
+                }, // (number)
+            },
+            EndGame: {
+                ShowScore: (hearts, coins, items) => {
+                    document.querySelector('.game_over').classList.remove('hidden');
+                    updateLife(hearts);
+                    updateCoin(coins);
+
+
+                }, // сердца (number), монеты (number), кнопки меню (bool[4])
+                onAddScore: () => { window.UNITY.sendMessageToUnity(new Command("addscore", [])) }, // при переходе с кнопки "порадовать принцессу"
+                onPlayGame: () => { UIAPI.RotateScreen.onPlayGame() }, // кнопка возврата в игру
+
+                onItem1: () => { window.UNITY.sendMessageToUnity(new Command("buy", ["1"])) }, // покупка
+                onItem2: () => { window.UNITY.sendMessageToUnity(new Command("buy", ["2"])) }, // покупка
+                onItem3: () => { window.UNITY.sendMessageToUnity(new Command("buy", ["3"])) }, // покупка
+                onItem4: () => { window.UNITY.sendMessageToUnity(new Command("buy", ["4"])) }, // покупка
+                onBack: () => { UIAPI.RotateScreen.onPlayGame() }, // кнопка возврата в игру
+
+                ShowPromo: (promo) => {
+                    document.querySelector('.promo_code').classList.remove('hidden');
+                }, // показать код скидки (string) при удачной покупке
+            },
+        }
+        const script = document.createElement("script");
+        script.src = "Build/_Build.loader.js";
+        let requestId = 0;
+
+        String.prototype.format = function () {
+            let args = arguments;
+            return this.replace(/{(\d+)}/g, function (match, number) {
+                return typeof args[number] != 'undefined' ? args[number] : match;
+            });
+        };
+
+        class Command {
+            constructor(command, data) {
+                this.command = command;
+                this.data = data
+            }
+
+            command = "";
+            data = [];
+        }
+
+        let callbacks = [];
+        window._onReceiveFromUnity = (message) => {
+            console.log("[JS receive]", message)
+            if (message === 'init') {
+                window.UNITY.oninit()
+                return;
+            }
+            const json = JSON.parse(message);
+            switch (json.command) {
+                case "hideloading": {
+                    UIAPI.HideLoading()
+                    break;
+                }
+                case "auth.show": {
+                    UIAPI.Auth.Show()
+                    break;
+                }
+                case "auth.hide": {
+                    UIAPI.Auth.Hide()
+                    break;
+                }
+                case "auth.phonecorrect": {
+                    UIAPI.Auth.PhoneCorrect(json.data[0] === "true")
+                    break;
+                }
+                case "auth.codecorrect": {
+                    UIAPI.Auth.CodeCorrect(json.data[0] === "true")
+                    break;
+                }
+                case "rotatescreen.show": {
+                    UIAPI.RotateScreen.Show()
+                    break;
+                }
+                case "rotatescreen.hide": {
+                    UIAPI.RotateScreen.Hide()
+                    break;
+                }
+                case "endgame.showscore": {
+                    UIAPI.EndGame.ShowScore(json.data[0], json.data[1], [json.data[2] === "true", json.data[3] === "true", json.data[4] === "true", json.data[5] === "true"])
+                    break;
+                }
+                case "endgame.showpromo": {
+                    UIAPI.EndGame.ShowPromo(json.data[0])
+                    break;
+                }
+                case "gameplay.setscore": {
+                    UIAPI.Gameplay.SetScore(json.data[0])
+                    break;
+                }
+                case "gameplay.sethearts": {
+                    UIAPI.Gameplay.SetHearts(json.data[0])
+                    break;
+                }
+            }
+            console.log("receive from Unity:", json);
+        };
+
+        window.UNITY = {}
+        window.UNITY.oninit = () => { console.log("init") }
+
+        script.onload = () => {
+            var canvas = document.querySelector("#unity-canvas");
+            if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+                // Mobile device style: fill the whole browser client area with the game canvas:
+                var meta = document.createElement('meta');
+                meta.name = 'viewport';
+                meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover';
+                document.getElementsByTagName('head')[0].appendChild(meta);
+
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                canvas.style.width = "100%";
+                canvas.style.height = "100%";
+                canvas.style.position = "fixed";
+
+                document.body.style.textAlign = "left";
+            }
+
+            createUnityInstance(canvas, {
+                dataUrl: "Build2/_Build.data",
+                frameworkUrl: "Build2/_Build.framework.js",
+                codeUrl: "Build2/_Build.wasm",
+                streamingAssetsUrl: "StreamingAssets",
+                companyName: "Mixar",
+                productName: "mybox runner",
+                productVersion: "0.1",
+            },)// (progress) => { progressBarFull.style.width = 100 * progress + "%"; })
+                .then((unityInstance) => {
+                    window.unityInstance = unityInstance
+                    window.receiveMessageFromUnity = (message) => { window._onReceiveFromUnity(message) };
+                    window.UNITY.sendMessageToUnity = function (message) {
+                        const m = JSON.stringify(message);
+                        window.unityInstance.SendMessage("[Bridge]", "SendToUnity", m); // (GO name, method name, parameter)
+                    }
+                    //loadingBar.style.display = "none";
+                }
+                ).catch((message) => {
+                    alert(message);
+                });
+        };
+        document.body.appendChild(script);
+    </script>
+    <script defer>
+        const canvas = document.querySelector("#unity-canvas");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+    </script>
+
+</body>
+
+</html>
