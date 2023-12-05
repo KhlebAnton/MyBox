@@ -2,6 +2,9 @@ document.body.style.height = window.innerHeight + 'px';
 window.addEventListener('resize', function () {
   document.body.style.height = window.innerHeight + 'px';
 });
+document.querySelector('button').addEventListener('dblclick', function(event) {
+  event.preventDefault();
+});
 
 
 function loadGame() {
