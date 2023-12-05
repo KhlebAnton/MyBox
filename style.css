@@ -74,6 +74,7 @@ body {
     background-image: url("img/load_img/load_screen portrait.png");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: 50%;
 }
 
 .loadscreen svg {
