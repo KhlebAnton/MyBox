@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>MyBox</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -66,7 +67,7 @@
         <h2>Введите номер телефона</h2>
         <p>Мы отправим код по СМС, чтобы подтвердить Ваш номер телефона</p>
         <form class="telephone">
-            <input type="tel" id="phone" name="phone" maxlength="15" required="required"
+            <input data-phone-pattern type="tel" id="phone" name="phone" required="required"
                 pattern="^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$"
                 placeholder="+7" oninput="checkPhoneNumber()" />
         </form>
@@ -106,7 +107,7 @@
             Пришел Правильный код
         </button>
 
-        <p id="timerText" >Новый пароль через 0:<span id="timerValue">59</span></p>
+        <p id="timerText">Новый пароль через 0:<span id="timerValue">59</span></p>
         <div id="resendLink" style="display: none;">
             <p id="resendButton">
                 Повторная отправка кода
@@ -792,7 +793,9 @@
             </div>
 
         </div>
-        <p style="padding-top: 60px;" class="words_cloud">Приходите завтра (</p>
+        <div style="padding-top: 60px;" class="words_cloud">Приходите завтра ( <div onclick="closeWordCloud(this)"
+                class="close_word"></div>
+        </div>
         <div class="btn_next active_btn" onclick="next(this, '.game_over')">
             Ок
         </div>
@@ -928,13 +931,15 @@
             </div>
 
         </div>
-        <p style="padding-top: 60px;" class="words_cloud">Поздравляю!<br> Ты заработал <span>245</span> монет, обменяем
-            на сертификаты?</p>
-        <div onclick="getActiveCards(), next(this, '.shop')" class="btn_next active_btn">
-            Обменять
+        <div style="padding-top: 60px;" class="words_cloud">Поздравляю!<br> Ты заработал <span>245</span> монет,
+            обменяем
+            на сертификаты? <div onclick="closeWordCloud(this)" class="close_word"></div>
+            <div onclick="getActiveCards(), next(this, '.shop')" class="btn_next active_btn">
+                Обменять
+            </div>
         </div>
-
     </div>
+
     <div class="screen game_over kissing_animation hidden">
         <div class="head">
             <svg xmlns="http://www.w3.org/2000/svg" width="62" height="21" viewBox="0 0 62 21" fill="none">
@@ -1112,13 +1117,13 @@
                 </defs>
             </svg>
         </div>
-        <p style="padding-top: 30px;" class="words_cloud">Как использовать промокод: скачивай приложение Mybox или
-            сделать заказ на сайте</p>
+        <div style="padding-top: 30px;" class="words_cloud">Как использовать промокод: скачивай приложение Mybox или
+            сделать заказ на сайте <div onclick="closeWordCloud(this)" class="close_word"></div>
+        </div>
         <div class="btn_promo_group">
             <div onclick="goClickedLink(this)" class="btn_load_app" data-page-url="https://www.google.ru">Скачать
                 приложние</div>
-            <div onclick="goClickedLink(this)" class="btn_go_site" data-page-url="https://www.yandex.ru">Перейти на сайт
-            </div>
+
         </div>
     </div>
 

@@ -108,8 +108,9 @@ shopCards.forEach(card => {
       if (+coins >= 1000) {
         document.querySelector('.btn_trade').classList.add('trade_active');
         document.querySelector('.btn_trade').addEventListener("click", () => {
+          document.querySelector('.shop').classList.add("hidden");
           if (autorization === false) {
-            document.querySelector('.shop').classList.add("hidden");
+
             document.querySelector('.authorization').classList.remove("hidden");
 
             let autorizationScreen = document.querySelector('.authorization');
@@ -183,6 +184,15 @@ function gamePlayGo(element) {
   document.querySelector('.paused').style.opacity = '1';
 }
 
+// клик на крестик мыслей осткрывается экран с игрой (а если жизней нет, то открыватся окно "лимит жизней")
+function closeWordCloud(elem) {
+  elem.closest(".screen").classList.add('hidden')
+  if (lifeCoins > 0) {
+    document.querySelector('.game_go').classList.remove('hidden');
+  } else {
+    document.querySelector('.game_over').classList.remove('hidden');
+  }
+}
 
 
 
@@ -200,8 +210,38 @@ let autorization = false;
 function registration(e) {
   autorization = e;
 }
+//mask телефона
+document.addEventListener("DOMContentLoaded", function () {
+  var eventCalllback = function (e) {
+    var el = e.target,
+      clearVal = el.dataset.phoneClear,
+      pattern = el.dataset.phonePattern,
+      matrix_def = "+7(___) ___ __ __",
+      matrix = pattern ? pattern : matrix_def,
+      i = 0,
+      def = matrix.replace(/\D/g, ""),
+      val = e.target.value.replace(/\D/g, "");
+    if (clearVal !== 'false' && e.type === 'blur') {
+      if (val.length < matrix.match(/([\_\d])/g).length) {
+        e.target.value = '';
+        return;
+      }
+    }
+    if (def.length >= val.length) val = def;
+    e.target.value = matrix.replace(/./g, function (a) {
+      return /[_\d]/.test(a) && i < val.length ? val.charAt(i++) : i >= val.length ? "" : a
+    });
+  }
+  var phone_inputs = document.querySelectorAll('[data-phone-pattern]');
+  for (let elem of phone_inputs) {
+    for (let ev of ['input', 'blur', 'focus']) {
+      elem.addEventListener(ev, eventCalllback);
+    }
+  }
+});
 
 let phoneNumberSave;
+
 
 function checkPhoneNumber() {
   let phoneNumber = document.getElementById('phone').value;

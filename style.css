@@ -405,8 +405,7 @@ input:focus {
     height: 140.58px;
 }
 
-.words_cloud::after {
-    content: '';
+.words_cloud .close_word {
     width: 26px;
     height: 26px;
     position: absolute;
@@ -431,10 +430,10 @@ input:focus {
     bottom: 0;
     left: 0;
     right: 0;
-    background: url("img/animation/Dragon/Dragon-1.png") 30% 100% / 40% no-repeat,
-        url("img/animation/Princess/Princess-1.png") 65% 100% / 25% no-repeat,
+    background: url("img/animation/Dragon/Dragon-1.png") 30% 100% / 45% no-repeat,
+        url("img/animation/Princess/Princess-1.png") 65% 100% / 31% no-repeat,
         url("img/animation/love.svg") 60% 0 / 0% no-repeat;
-    animation: kiss 1s infinite;
+    animation: kiss 1.5s infinite;
     transition: 0.05s;
 
 }
@@ -449,14 +448,14 @@ input:focus {
     }
 
     60% {
-        background: url('img/animation/Dragon/Dragon-4.png') 30% 100% / 40% no-repeat,
-            url('img/animation/Princess/Princess-4.png') 65% 100% / 25% no-repeat,
+        background: url('img/animation/Dragon/Dragon-4.png') 30% 100% / 45% no-repeat,
+            url('img/animation/Princess/Princess-4.png') 65% 100% / 31% no-repeat,
             url("img/animation/love.svg") 55% 0 / 0% no-repeat;
     }
 
     100% {
-        background: url("img/animation/Dragon/Dragon-5.png") 30% 100% / 40% no-repeat,
-            url("img/animation/Princess/Princess-5.png") 65% 100% / 25% no-repeat,
+        background: url("img/animation/Dragon/Dragon-5.png") 30% 100% / 45% no-repeat,
+            url("img/animation/Princess/Princess-5.png") 65% 100% / 31% no-repeat,
             url("img/animation/love.svg") 55% 10% / 10% no-repeat;
     }
 }
@@ -796,7 +795,7 @@ input:focus {
         left: 0;
         right: 0;
         background: url("img/animation/Dragon/Dragon-1.png") -50% 50% / 80% no-repeat,
-            url("img/animation/Princess/Princess-1.png") 100% 55% / 50% no-repeat,
+            url("img/animation/Princess/Princess-1.png") 100% 60% / 60% no-repeat,
             url("img/animation/love.svg") 60% 0 / 0% no-repeat;
         animation: kiss 1.5s infinite;
         transition: 0.05s;
@@ -814,13 +813,13 @@ input:focus {
 
         60% {
             background: url('img/animation/Dragon/Dragon-4.png') -50% 50% / 80% no-repeat,
-                url('img/animation/Princess/Princess-4.png') 100% 55% / 50% no-repeat,
+                url('img/animation/Princess/Princess-4.png') 100% 60% / 60% no-repeat,
                 url("img/animation/love.svg") 60% 20% / 0% no-repeat;
         }
 
         100% {
             background: url("img/animation/Dragon/Dragon-5.png") -50% 50% / 80% no-repeat,
-                url("img/animation/Princess/Princess-5.png") 100% 55% / 50% no-repeat,
+                url("img/animation/Princess/Princess-5.png") 100% 60% / 60% no-repeat,
                 url("img/animation/love.svg") 65% 30% / 20% no-repeat;
         }
     }
@@ -886,7 +885,7 @@ input:focus {
         width: 324px;
         height: 43.4vh;
         left: calc(50% - (324px / 2));
-        background: url("img/Knight.svg") 20% /contain no-repeat;
+        background: url("img/Knight.png") center /contain no-repeat;
     }
 
     .game_start .footer p {
@@ -974,8 +973,8 @@ input:focus {
     }
 
     .promo_code::after {
-        background: url('img/Knight.svg') 20% 15% / 20% no-repeat,
-            url('img/Knight.svg') 80% 15% / 20% no-repeat,
+        background: url('img/Knight.png') 20% 15% / 20% no-repeat,
+            url('img/Knight.png') 80% 15% / 20% no-repeat,
             url('img/Princess.svg') 50% 5% / 15% no-repeat,
             url("img/bglines.svg") 0 / 40% repeat;
 
@@ -1055,7 +1054,7 @@ input:focus {
 
 @media screen and (min-width: 1020px) {
     .loadscreen {
-        background-image: url("img/load_img/load_screen\ 812x375.png");
+        background-image: url("img/load_img/Экран\ Пиксельарт\ 3\ горизонтальная\ 1920x1080.png");
     }
 
     .screen {
@@ -1063,7 +1062,7 @@ input:focus {
     }
 
     .btn_next {
-        bottom: 10%;
+        bottom: 30px;
     }
 
     .game_start .btn_next {
@@ -1082,7 +1081,7 @@ input:focus {
         letter-spacing: 0.374px;
         text-transform: uppercase;
 
-        margin: 100px 0;
+        margin: 10vh 0;
     }
 
     .authorization h2 {
@@ -1176,7 +1175,7 @@ input:focus {
 
     .game_lanscape {
         height: 100%;
-        background: url("img/Princess.svg") 10% 100% / 343px 643px no-repeat;
+        background: url("img/Princess.svg") 10% 100% / 24% no-repeat;
     }
 
     .words_cloud {
@@ -1355,7 +1354,7 @@ input:focus {
     .btn_promo_group {
         position: absolute;
         right: 15%;
-        bottom: 120px;
+        bottom: 50px;
     }
 
     .game_paused svg {
@@ -1363,7 +1362,7 @@ input:focus {
         height: 200px;
     }
 
-    .words_cloud::after {
+    .words_cloud .close_word {
         content: '';
         width: 66.2px;
         height: 66.2px;
@@ -1381,7 +1380,7 @@ input:focus {
 
 
     .promo_code::after {
-        background: url(img/Knight.svg) 20% 15% / 20% no-repeat, url(img/Knight.svg) 80% 15% / 20% no-repeat, url(img/Princess.svg) 50% 5% / 15% no-repeat, url(img/bglines.svg) 0 / 20% repeat;
+        background: url(img/Knight.png) 20% 15% / 20% no-repeat, url(img/Knight.png) 80% 15% / 20% no-repeat, url(img/Princess.svg) 50% 5% / 15% no-repeat, url(img/bglines.svg) 0 / 20% repeat;
     }
 
     .authorization::after {
