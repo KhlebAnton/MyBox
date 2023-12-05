@@ -38,7 +38,7 @@ function updateLife() {
     life.innerHTML = lifeCoins;
   })
 }
-function updateLife(lifeItem) {
+function updateLifeApp(lifeItem) {
   document.querySelectorAll('.life').forEach(life => {
     life.innerHTML = lifeItem;
   })
@@ -66,7 +66,7 @@ function updateCoin() {
   })
 }
 
-function updateCoin(coinItem) {
+function updateCoinApp(coinItem) {
   document.querySelectorAll('.coin').forEach(coin => {
     coin.innerHTML = coinItem;
   })
