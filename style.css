@@ -784,6 +784,11 @@ input:focus {
     .shop .shop_container {
         margin-top: 0;
     }
+    .shop .shop_card {
+        width: 20%;
+        min-width: 100.79px;
+        height: 150px;
+    }
 }
 
 @media screen and (orientation: portrait) {
