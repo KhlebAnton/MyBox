@@ -429,7 +429,7 @@ input:focus {
     bottom: 0;
     left: 0;
     right: 0;
-    background: url("img/animation/Dragon/Dragon-1.png") 30% 100% / 45% no-repeat,
+    background: url("img/animation/Dragon/Dragon-1.svg") 30% 100% / 45% no-repeat,
         url("img/animation/Princess/Princess-1.png") 65% 100% / 31% no-repeat,
         url("img/animation/love.svg") 60% 0 / 0% no-repeat;
     animation: kiss 1.5s infinite;
@@ -439,26 +439,25 @@ input:focus {
 
 @keyframes kiss {
     10% {
-        background-image: url('img/animation/Dragon/Dragon-2.png'), url('img/animation/Princess/Princess-2.png'), url("img/animation/love.svg");
+        background-image: url('img/animation/Dragon/Dragon-2.svg'), url('img/animation/Princess/Princess-2.png'), url("img/animation/love.svg");
     }
 
     30% {
-        background-image: url('img/animation/Dragon/Dragon-3.png'), url('img/animation/Princess/Princess-3.png'), url("img/animation/love.svg");
+        background-image: url('img/animation/Dragon/Dragon-3.svg'), url('img/animation/Princess/Princess-3.png'), url("img/animation/love.svg");
     }
 
     60% {
-        background: url('img/animation/Dragon/Dragon-4.png') 30% 100% / 45% no-repeat,
+        background: url('img/animation/Dragon/Dragon-4.svg') 30% 100% / 45% no-repeat,
             url('img/animation/Princess/Princess-4.png') 65% 100% / 31% no-repeat,
             url("img/animation/love.svg") 55% 0 / 0% no-repeat;
     }
 
     100% {
-        background: url("img/animation/Dragon/Dragon-5.png") 30% 100% / 45% no-repeat,
+        background: url("img/animation/Dragon/Dragon-5.svg") 30% 100% / 45% no-repeat,
             url("img/animation/Princess/Princess-5.png") 65% 100% / 31% no-repeat,
             url("img/animation/love.svg") 55% 10% / 10% no-repeat;
     }
 }
-
 
 
 .screen.shop {
